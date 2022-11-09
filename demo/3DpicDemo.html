@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="content">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+<script>
+  const divs = document.querySelectorAll(".content > div")
+  let r = 0
+  let temp = 0
+  const angle = 360 / divs.length
+  const pics = [
+    "https://tenfei03.cfp.cn/creative/vcg/nowater800/new/VCG211307729331.jpg?x-oss-process=image/format,webp",
+    "https://tenfei04.cfp.cn/creative/vcg/nowater800/new/VCG211276218324.jpg?x-oss-process=image/format,webp",
+    "https://alifei05.cfp.cn/creative/vcg/nowater800/new/VCG211387621447.jpg?x-oss-process=image/format,webp",
+    "https://alifei04.cfp.cn/creative/vcg/nowater800/new/VCG211386285314.jpg?x-oss-process=image/format,webp",
+    "https://alifei04.cfp.cn/creative/vcg/nowarter800/new/VCG211256997255.jpg?x-oss-process=image/format,webp"
+  ]
+  divs.forEach((el,index) => {
+    el.style.transform = "rotateY("+r+"deg) translateZ(400px)"
+    el.style.backgroundImage = "url("+pics[index]+")";
+    r-=angle
+  });
+</script>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    --name:an1 ;
+  }
+  body{
+    position: relative;
+    background-color: black;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+  }
+  .content{
+    transform-style: preserve-3d;
+    animation:var(--name) 100s linear 0s infinite ;
+
+  }
+  .content > div{
+    position: absolute;
+    width:400px;
+    height:300px;
+    top: calc(50% + 150px);
+    left: calc(50% - 200px);
+    border:1px solid white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  @keyframes an1{
+    0%{
+      transform: rotateY(0deg);
+    }
+    50%{
+      transform: rotateY(180deg);
+    }
+    100%{
+      transform: rotateY(360deg);
+    }
+  }
+</style>
+</html>
