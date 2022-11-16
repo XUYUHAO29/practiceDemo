@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="table">
+    <div class="tbody">
+      <div class="tr table-thead-fix">
+        <div class="th"><span>title1</span></div>
+        <div class="th"><span>title1qwer</span></div>
+        <div class="th"><span>title1qwerqweqwerqwerqwer</span></div>
+      </div>
+      <div class="tr">
+        <div class="td">title1dasdf</div>
+        <div class="td">title2fasd</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1dfasdf</div>
+        <div class="td">title2fasdfasdf</div>
+        <div class="td">title2asdfasdfasdf</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+      <div class="tr">
+        <div class="td">title1</div>
+        <div class="td">title2qwerqwer</div>
+        <div class="td">title2</div>
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(165, 88, 237);
+  }
+  .table{
+    width: 50%;
+    height: 300px;
+    margin: 100px auto;
+    overflow-x: hidden;
+    background-color:transparent;
+    backdrop-filter: blur(10px);
+    /* border: 1px solid white; */
+  }
+  .tbody{
+    width: 100%;
+    height: 500px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+  }
+  .tr{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+  }
+  .th{
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .tr > div{
+    width: 33%;
+    flex-shrink: 0;
+    border-bottom:1px solid white ;
+    display: flex;
+    align-items: center;
+  }
+  .table-thead-fix{
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+
+
+  .table::-webkit-scrollbar{
+    /* display: none; */
+    background-color: transparent;
+    width: 10px;
+  }
+  .table::-webkit-scrollbar-thumb{
+    background-color: rgb(203, 89, 176);
+    border-radius: 25px;
+  }
+</style>
+</html>
