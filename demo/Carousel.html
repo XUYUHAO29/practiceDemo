@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel</title>
+</head>
+<script>
+  window.onload = function(){
+    const content = document.querySelector(".content")
+    const pics = document.querySelectorAll(".content-pic")
+    const leftBtn = document.querySelector(".leftBtn")
+    const rightBtn = document.querySelector(".rightBtn")
+    const target = document.querySelector(".target")
+    const points = []
+    let curLeft = 0
+    let index = 0
+    let pre = 1
+    let auto = true
+    const urls = [
+      "https://alifei02.cfp.cn/creative/vcg/nowater800/new/VCG211404753844.jpg",
+      "https://tenfei03.cfp.cn/creative/vcg/nowater800/new/VCG211402358419.jpg",
+      "https://alifei01.cfp.cn/creative/vcg/nowater800/new/VCG211398800292.jpg",
+      "https://alifei05.cfp.cn/creative/vcg/nowater800/new/VCG211410345217.jpg"
+    ]
+    function Background(){
+      if(urls){
+        let i = 0
+        pics.forEach(el=>{
+          el.style.background = `url(${urls[i++]})`
+        })
+      } 
+      else {
+        pics.forEach(el=>{
+          const r = Math.floor(Math.random()*255) + 1
+          const g = Math.floor(Math.random()*255) + 1
+          const b = Math.floor(Math.random()*255) + 1
+          el.style.backgroundColor = `rgb(${r},${g},${b})`
+        })
+      }
+    }
+    function createPoint(){
+      for(let i = 0; i < pics.length; i++){
+        const div = document.createElement("div")
+        div.onclick = function(){
+          moveTarget(i * 800)
+        }
+        points.push(div)
+        target.append(div)
+      }
+      target.style.setProperty("--targetWidth", target.clientWidth/2 + "px")
+    }
+    function rStep() {
+      pre = index
+      index >= pics.length - 1 ? index = 0 : index++
+      Points()
+      curLeft = index * 800
+      pics.forEach(el =>{
+        el.style.marginLeft = -curLeft+"px"
+        el.style.marginRight = curLeft+"px"
+      })
+    }
+    function lStep() {
+      pre = index
+      index <= 0 ? index = pics.length - 1 : index--
+      Points()
+      curLeft= index * 800
+      pics.forEach(el =>{
+        el.style.marginLeft = -curLeft+"px"
+        el.style.marginRight = curLeft+"px"
+      })
+    }
+    function moveTarget(target){
+      curLeft = target
+      pics.forEach(el =>{
+        el.style.marginLeft = -curLeft+"px"
+        el.style.marginRight = curLeft+"px"
+      })
+      pre = index
+      index = curLeft / 800
+      Points()
+    }
+    function Points(){
+      points[index].style.setProperty("background-color", "rgb(110, 107, 101)")
+      points[pre].style.setProperty("background-color", "#fff")
+    }
+    function autoSroll(){
+      let timer = setInterval(rStep, 8000);
+    }
+    function init(){
+      Background()
+      createPoint()
+      Points()
+      auto && autoSroll()
+      leftBtn.addEventListener("click",lStep)
+      rightBtn.addEventListener("click",rStep)
+    }
+    init()
+  }
+</script>
+<body>
+  <div class="content">
+      <div class="leftBtn"></div>
+      <div class="content-pic"></div>
+      <div class="content-pic"></div>
+      <div class="content-pic"></div>
+      <div class="content-pic"></div>
+      <div class="rightBtn"></div>
+      <div class="target"></div>
+  </div>
+</body>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    --targetWidth:0;
+  }
+  .content{
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: calc(50% - 400px);
+    overflow: hidden;
+  }
+  .content-pic{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    transition: all 1.5s ease;
+  }
+  .leftBtn, .rightBtn{
+    position: absolute;
+    width: 20px;
+    height: 70px;
+    top: calc(50% - 45px);
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 2;
+  }
+  .target{
+    --targetWidth:0;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: calc(100% - 30px);
+    left: calc(50% - var(--targetWidth));
+    align-self: center;
+    height: 15px;
+  }
+  .target > div{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin:0 2px;
+    background-color: white;
+  }
+  .target > div:hover{
+    background-color: rgb(110, 107, 101);
+    cursor: pointer;
+  }
+  .leftBtn{
+    left: 0;
+  }
+  .rightBtn{
+    right: 0;
+  }
+</style>
+</html>

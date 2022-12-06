@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date-animation</title>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+  <div class="box">
+
+  </div>
+</body>
+<script>
+  window.onload = function(){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(item => console.log(item))
+    })
+    document.querySelectorAll(".box").forEach(div => observer.observe(div))
+  }
+</script>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  background:radial-gradient(red, black);;
+}
+  .box{
+    height: 0px;
+    width: 0px;
+    border-top: 500px solid transparent;
+    border-right: 500px solid  transparent;
+    border-bottom: 500px solid aqua;
+    border-left: 500px solid  aqua;
+  }
+</style>
+</html>
